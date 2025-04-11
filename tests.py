@@ -52,17 +52,12 @@ class TestBooksCollector:
         assert 'Темная половина' in collector.get_books_with_specific_genre('Ужасы')
         assert len(collector.get_books_with_specific_genre('Ужасы')) == 2
 
-    def test_get_books_genre_returns_correct_dictionary(self, collector):
+    def test_get_books_genre_returns_correct_dictionary(self, collector, collector_with_books):
         test_books = {
             "Оно": "Ужасы",
             "Шерлок Холмс": "Детективы",
             "Хоббит": "Фантастика"
         }
-
-        for name, genre in test_books.items():
-            collector.add_new_book(name)
-            collector.set_book_genre(name, genre)
-
         assert collector.get_books_genre() == test_books
         assert len(collector.get_books_genre()) == 3
 
